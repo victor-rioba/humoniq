@@ -4,4 +4,6 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
   modules: ["@nuxt/eslint"],
+
+  css: ["~/assets/css/inter.css", "~/assets/css/font.css"],
 });
