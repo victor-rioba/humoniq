@@ -6,10 +6,7 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "@nuxt/fonts"],
 
   fonts: {
-    families: [
-      { name: "Inter", provider: "local" },
-      { name: "Ubuntu Sans Mono", provider: "local" },
-    ],
+    families: [{ name: "Inter" }, { name: "Ubuntu Sans Mono" }],
   },
 
   shadcn: {
