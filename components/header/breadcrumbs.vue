@@ -34,6 +34,7 @@ const breadcrumbs = computed(() => {
           <Icon
             icon="material-symbols-light:arrow-forward-ios-rounded"
             class="text-gray size-3.5"
+            ssr
           />
         </UiBreadcrumbSeparator>
       </div>

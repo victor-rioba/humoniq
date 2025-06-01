@@ -5,6 +5,6 @@ import { Icon } from "@iconify/vue";
 <template>
   <div class="text-gray flex items-center gap-2.5">
     Hi Ella
-    <Icon icon="ph:hourglass-medium" class="size-6 text-other-gold" />
+    <Icon icon="ph:hourglass-medium" class="size-6 text-other-gold" ssr />
   </div>
 </template>

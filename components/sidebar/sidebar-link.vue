@@ -23,7 +23,7 @@ const NuxtLink = resolveComponent("NuxtLink");
       'border border-transparent': to !== activeRoute,
     }"
   >
-    <Icon :icon="icon" class="text-gray" />
+    <Icon :icon="icon" class="text-gray" ssr />
     {{ title }}
   </UiButton>
 </template>

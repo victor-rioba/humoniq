@@ -26,6 +26,7 @@ const statusIcon = computed(
         'text-other-red': status === MissionStatus.Attention,
         'text-other-green': status === MissionStatus.Success,
       }"
+      ssr
     />
 
     {{ status }}

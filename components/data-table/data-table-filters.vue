@@ -8,7 +8,7 @@ import { Icon } from "@iconify/vue";
       <span
         class="absolute start-0 inset-y-0 flex items-center justify-center px-3"
       >
-        <Icon icon="lucide:search" class="size-4" />
+        <Icon icon="lucide:search" class="size-4" ssr />
       </span>
       <UiInput
         placeholder="Search traveler and details"
@@ -17,7 +17,7 @@ import { Icon } from "@iconify/vue";
       <span
         class="absolute end-0 inset-y-0 flex items-center justify-center px-3"
       >
-        <Icon icon="lucide:chevron-down" class="size-5 text-gray" />
+        <Icon icon="lucide:chevron-down" class="size-5 text-gray" ssr />
       </span>
     </div>
     <UiButton
@@ -26,7 +26,7 @@ import { Icon } from "@iconify/vue";
     >
       All users
 
-      <Icon icon="lucide:filter" />
+      <Icon icon="lucide:filter" ssr />
     </UiButton>
     <UiButton
       variant="ghost"
@@ -34,7 +34,7 @@ import { Icon } from "@iconify/vue";
     >
       All missions
 
-      <Icon icon="lucide:filter" />
+      <Icon icon="lucide:filter" ssr />
     </UiButton>
   </div>
 </template>
