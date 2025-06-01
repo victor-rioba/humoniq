@@ -22,6 +22,7 @@ const filteredStatuses = ref<MissionStatus[]>([]);
 
 const isLoading = ref(false);
 
+// fetch from API
 const allMissions: Mission[] = [
   {
     status: MissionStatus.Working,
@@ -48,14 +49,62 @@ const allMissions: Mission[] = [
     status: MissionStatus.Success,
     createdAt: "3 days ago",
     mission: "Rebook Flight",
-    traveler: "Tanya McDonough",
-    details: "JFK-SVQ",
+    traveler: "Daniela Delascurain",
+    details: "BOI-CPT",
+  },
+  {
+    status: MissionStatus.Success,
+    createdAt: "4 days ago",
+    mission: "Cancel Hotel",
+    traveler: "Caleb Moore",
+    details: "Berlin, DE",
+  },
+  {
+    status: MissionStatus.Success,
+    createdAt: "7 days ago",
+    mission: "Rebook Flight",
+    traveler: "Tallulah McAuslan",
+    details: "EWR-AMS",
+  },
+  {
+    status: MissionStatus.Success,
+    createdAt: "8 days ago",
+    mission: "Rebook Flight",
+    traveler: "Jack Garland",
+    details: "EWR-AMS",
+  },
+  {
+    status: MissionStatus.Success,
+    createdAt: "8 days ago",
+    mission: "Rebook Flight",
+    traveler: "Jack Garland",
+    details: "EWR-AMS",
+  },
+  {
+    status: MissionStatus.Success,
+    createdAt: "8 days ago",
+    mission: "Rebook Flight",
+    traveler: "Cassandra Forestal",
+    details: "LHR-MAD",
+  },
+  {
+    status: MissionStatus.Success,
+    createdAt: "10 days ago",
+    mission: "Rebook Hotel",
+    traveler: "Keith Hughes",
+    details: "Paris, FR",
+  },
+  {
+    status: MissionStatus.Success,
+    createdAt: "10 days ago",
+    mission: "Cancel Hotel",
+    traveler: "Sebastian Gomez",
+    details: "Madrid, ES",
   },
 ];
 
-const missions = computed<Mission[]>(() => {
-  return allMissions.map((mission) => mission);
-});
+// filtering can be done here
+const missions = computed(() => allMissions);
 
 const columnHelper = createColumnHelper<Mission>();
 

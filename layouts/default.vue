@@ -1,9 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="h-screen w-screen p-[20px] flex gap-[20px]">
+  <div class="h-screen w-screen p-5 pr-0 flex gap-5">
     <Sidebar />
-    <div class="w-full p-[20px] space-y-10">
+    <div class="w-full p-5 pr-10 space-y-10 overflow-scroll">
       <Header />
       <slot />
     </div>
