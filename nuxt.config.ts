@@ -3,7 +3,17 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
 
   devtools: { enabled: true },
-  modules: ["@nuxt/eslint", "@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "@nuxt/fonts"],
 
-  css: ["~/assets/css/inter.css", "~/assets/css/font.css"],
+  fonts: {
+    families: [
+      { name: "Inter", provider: "local" },
+      { name: "Ubuntu Sans Mono", provider: "local" },
+    ],
+  },
+
+  shadcn: {
+    prefix: "ui",
+    componentDir: "./components/ui",
+  },
 });
