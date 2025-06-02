@@ -18,8 +18,6 @@ import { DataTableStatus } from "#components";
 import { MissionStatus, type Mission } from "~/types";
 import { Icon } from "@iconify/vue";
 
-const filteredStatuses = ref<MissionStatus[]>([]);
-
 const isLoading = ref(false);
 
 // fetch from API
@@ -103,8 +101,43 @@ const allMissions: Mission[] = [
   },
 ];
 
-// filtering can be done here
-const missions = computed(() => allMissions);
+const searchQuery = ref("");
+
+const usersFilterOptions = computed(() => {
+  const uniqueTravelers = new Set(
+    allMissions.map((mission) => mission.traveler)
+  );
+
+  return Array.from(uniqueTravelers).map((traveler) => ({
+    label: traveler,
+    value: traveler,
+  }));
+});
+
+const missionsFilterOptions = computed(() => {
+  const uniqueMissions = new Set(allMissions.map((mission) => mission.mission));
+  return Array.from(uniqueMissions).map((mission) => ({
+    label: mission,
+    value: mission,
+  }));
+});
+
+const selectedUsers = ref<string[]>([]);
+const selectedMissions = ref<string[]>([]);
+
+const missions = computed(() => {
+  return allMissions.filter((mission) => {
+    const matchesUserFilter =
+      !selectedUsers.value.length ||
+      selectedUsers.value.includes(mission.traveler);
+
+    const matchesMissionFilter =
+      !selectedMissions.value.length ||
+      selectedMissions.value.includes(mission.mission);
+
+    return matchesUserFilter && matchesMissionFilter;
+  });
+});
 
 const columnHelper = createColumnHelper<Mission>();
 
@@ -239,7 +272,44 @@ const table = useVueTable({
 
 <template>
   <div class="space-y-5">
-    <DataTableFilters />
+    <div class="flex items-center gap-5">
+      <div class="relative w-1/2 text-gray">
+        <span
+          class="absolute start-0 inset-y-0 flex items-center justify-center px-3"
+        >
+          <Icon icon="lucide:search" class="size-4" ssr />
+        </span>
+        <UiInput
+          v-model="searchQuery"
+          placeholder="Search traveler and details"
+          class="pl-9 bg-darker border-none rounded-sm placeholder:text-gray"
+        />
+      </div>
+      <DataTableFilterDropdown
+        :options="usersFilterOptions"
+        v-model:selected-options="selectedUsers"
+      >
+        <UiButton
+          variant="ghost"
+          class="w-full justify-between [&_svg]:size-4 bg-darker text-gray font-normal rounded-sm"
+        >
+          All users
+          <Icon icon="lucide:filter" ssr />
+        </UiButton>
+      </DataTableFilterDropdown>
+      <DataTableFilterDropdown
+        :options="missionsFilterOptions"
+        v-model:selected-options="selectedMissions"
+      >
+        <UiButton
+          variant="ghost"
+          class="w-full justify-between [&_svg]:size-4 bg-darker text-gray font-normal rounded-sm"
+        >
+          All missions
+          <Icon icon="lucide:filter" ssr />
+        </UiButton>
+      </DataTableFilterDropdown>
+    </div>
 
     <div class="w-full py-4">
       <div class="rounded-md border border-dark">
