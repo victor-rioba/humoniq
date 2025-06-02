@@ -291,7 +291,7 @@ const table = useVueTable({
       >
         <UiButton
           variant="ghost"
-          class="w-full justify-between [&_svg]:size-4 bg-darker text-gray font-normal rounded-sm"
+          class="flex-1 justify-between [&_svg]:size-4 bg-darker text-gray font-normal rounded-sm"
         >
           All users
           <Icon icon="lucide:filter" ssr />
@@ -303,7 +303,7 @@ const table = useVueTable({
       >
         <UiButton
           variant="ghost"
-          class="w-full justify-between [&_svg]:size-4 bg-darker text-gray font-normal rounded-sm"
+          class="flex-1 justify-between [&_svg]:size-4 bg-darker text-gray font-normal rounded-sm"
         >
           All missions
           <Icon icon="lucide:filter" ssr />

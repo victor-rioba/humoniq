@@ -6,6 +6,10 @@ const allBreadcrumbs = {
     { title: "Missions", to: "/missions" },
     { title: "All", to: "/missions" },
   ],
+  "/new": [
+    { title: "Missions", to: "/missions" },
+    { title: "New", to: "/new" },
+  ],
 };
 
 const activeRoute = computed(() => useRoute().path);

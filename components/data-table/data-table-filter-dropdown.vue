@@ -7,10 +7,10 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: "update:selectedOptions", selectedOptions: (string | number)[]): void;
+  (e: "update:selectedOptions", selectedOptions: string[]): void;
 }>();
 
-const onSelectionChange = (value: string | number) => {
+const onSelectionChange = (value: string) => {
   if (props.selectedOptions.some((o) => o === value)) {
     emit(
       "update:selectedOptions",
@@ -25,11 +25,9 @@ const onSelectionChange = (value: string | number) => {
 <template>
   <UiDropdownMenu>
     <UiDropdownMenuTrigger as-child>
-      <div ref="triggerRef" class="flex-1">
-        <slot />
-      </div>
+      <slot />
     </UiDropdownMenuTrigger>
-    <UiDropdownMenuContent class="border-0 bg-darker min-w-64" align="start">
+    <UiDropdownMenuContent class="border-dark bg-darker min-w-64" align="start">
       <UiDropdownMenuCheckboxItem
         v-for="option in options"
         :key="option.value"
