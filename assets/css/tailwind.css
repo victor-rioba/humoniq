@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --primary: 300, 69%, 75%; /* #EB94EB */
-    --primary-mid: #300, 38%, 55%; /* #B861B8 */
+    --primary-mid: 300, 38%, 55%; /* #B861B8 */
     --secondary: 207, 94%, 69%; /* #67B8FA */
     --secondary-mid: 207, 59%, 49%; /* #3485C7 */
     --gray: 240, 7%, 48%; /* #737384 */
@@ -19,6 +19,7 @@
 
     --radius: 10px;
     --radius-sm: 5px;
+    --radius-lg: 20px;
   }
 }
 
