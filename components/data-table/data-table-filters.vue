@@ -12,13 +12,8 @@ import { Icon } from "@iconify/vue";
       </span>
       <UiInput
         placeholder="Search traveler and details"
-        class="px-9 bg-darker border-none rounded-sm"
+        class="pl-9 bg-darker border-none rounded-sm"
       />
-      <span
-        class="absolute end-0 inset-y-0 flex items-center justify-center px-3"
-      >
-        <Icon icon="lucide:chevron-down" class="size-5 text-gray" ssr />
-      </span>
     </div>
     <UiButton
       variant="ghost"
