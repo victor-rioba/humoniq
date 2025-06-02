@@ -12,12 +12,12 @@ import { Icon } from "@iconify/vue";
       </span>
       <UiInput
         placeholder="Search traveler and details"
-        class="pl-9 bg-darker border-none rounded-sm"
+        class="pl-9 bg-darker border-none rounded-sm placeholder:text-gray"
       />
     </div>
     <UiButton
       variant="ghost"
-      class="flex-1 justify-between [&_svg]:size-4 bg-darker text-gray rounded-sm"
+      class="flex-1 justify-between [&_svg]:size-4 bg-darker text-gray font-normal rounded-sm"
     >
       All users
 
@@ -25,7 +25,7 @@ import { Icon } from "@iconify/vue";
     </UiButton>
     <UiButton
       variant="ghost"
-      class="flex-1 justify-between [&_svg]:size-4 bg-darker text-gray rounded-sm"
+      class="flex-1 justify-between [&_svg]:size-4 bg-darker text-gray font-normal rounded-sm"
     >
       All missions
 
