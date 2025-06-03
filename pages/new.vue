@@ -134,7 +134,7 @@ const airlineOptions = [
 
       <div class="space-y-5">
         <h3 class="font-semibold text-gray">Notitication</h3>
-        <UiRadioGroup :default-value="NotificationType.Email" class="gap-10">
+        <UiRadioGroup :default-value="NotificationType.Email" class="gap-5">
           <div
             class="flex items-center gap-2.5"
             v-for="option in notificationTypeOptions"
