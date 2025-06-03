@@ -19,8 +19,8 @@ const NuxtLink = resolveComponent("NuxtLink");
     variant="ghost"
     class="group flex gap-2.5 p-2.5 justify-start hover:bg-darkest font-semibold"
     :class="{
-      'bg-darkest border': to === activeRoute,
-      'border border-transparent': to !== activeRoute,
+      'bg-darkest border': activeRoute.startsWith(to),
+      'border border-transparent': !activeRoute.startsWith(to),
     }"
   >
     <Icon :icon="icon" class="text-gray" ssr />

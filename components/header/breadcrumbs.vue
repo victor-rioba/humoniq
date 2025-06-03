@@ -1,21 +1,57 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
 
-const allBreadcrumbs = {
-  "/missions": [
-    { title: "Missions", to: "/missions" },
-    { title: "All", to: "/missions" },
-  ],
-  "/new": [
-    { title: "Missions", to: "/missions" },
-    { title: "New", to: "/new" },
-  ],
-};
+const route = useRoute();
 
-const activeRoute = computed(() => useRoute().path);
+const activeRouteName = computed(() => route.name);
+
+const allBreadcrumbs = computed(() => {
+  return {
+    missions: [
+      {
+        title: "Missions",
+        to: {
+          name: "missions",
+        },
+      },
+      {
+        title: "All",
+        to: {
+          name: "missions",
+        },
+      },
+    ],
+    new: [
+      {
+        title: "Missions",
+        to: {
+          name: "missions",
+        },
+      },
+
+      {
+        title: "New",
+        to: {
+          name: "new",
+        },
+      },
+    ],
+    "missions-mission": [
+      {
+        title: "Missions",
+        to: {
+          name: "missions",
+        },
+      },
+      { title: route.params.mission as string, to: route },
+    ],
+  };
+});
 
 const breadcrumbs = computed(() => {
-  return allBreadcrumbs[activeRoute.value as keyof typeof allBreadcrumbs];
+  return allBreadcrumbs.value[
+    activeRouteName.value as keyof typeof allBreadcrumbs.value
+  ];
 });
 </script>
 
