@@ -18,6 +18,8 @@ import { DataTableStatus } from "#components";
 import { MissionStatus, type Mission } from "~/types";
 import { Icon } from "@iconify/vue";
 
+const NuxtLink = resolveComponent("NuxtLink");
+
 const isLoading = ref(false);
 
 // fetch from API
@@ -221,11 +223,19 @@ const columns = [
   columnHelper.display({
     id: "actions",
     header: "Actions",
-    cell: () => {
+    cell: ({ row }) => {
       return h(
         "div",
-        { class: "text-right text-primary font-semibold cursor-pointer" },
-        "View"
+        {
+          class: "text-right text-primary font-semibold cursor-pointer",
+        },
+        [
+          h(
+            NuxtLink,
+            { to: `/missions/${row.original.mission}` },
+            "View"
+          ),
+        ]
       );
     },
   }),
