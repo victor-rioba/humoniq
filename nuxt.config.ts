@@ -2,6 +2,12 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
 
+  runtimeConfig: {
+    public: {
+      baseUrl: "",
+    },
+  },
+
   devtools: { enabled: true },
   modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "@nuxt/fonts"],
 
@@ -12,5 +18,11 @@ export default defineNuxtConfig({
   shadcn: {
     prefix: "ui",
     componentDir: "./components/ui",
+  },
+
+  vite: {
+    optimizeDeps: {
+      include: ["@aspida/axios"],
+    },
   },
 });

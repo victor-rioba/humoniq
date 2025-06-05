@@ -7,14 +7,18 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "api:build": "aspida",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@aspida/axios": "^1.14.0",
     "@iconify/vue": "^5.0.0",
     "@nuxt/fonts": "0.11.4",
     "@nuxtjs/tailwindcss": "6.14.0",
     "@tanstack/vue-table": "^8.21.3",
     "@vueuse/core": "^13.3.0",
+    "aspida": "^1.14.0",
+    "axios": "^1.9.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "eslint": "^9.0.0",
