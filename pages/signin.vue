@@ -3,8 +3,19 @@ definePageMeta({
   layout: false,
 });
 
+const { login } = useAuth();
+
 const email = ref("");
 const password = ref("");
+
+async function handleSignIn() {
+  try {
+    await login(email.value, password.value);
+    return navigateTo({ name: "missions" });
+  } catch (error) {
+    console.warn("Login failed:", error);
+  }
+}
 </script>
 
 <template>
@@ -25,7 +36,10 @@ const password = ref("");
         placeholder="Password"
         class="h-full p-5 bg-darker border-none rounded-sm placeholder:text-gray"
       />
-      <UiButton class="w-full bg-primary-mid hover:bg-primary p-5 rounded-sm">
+      <UiButton
+        class="w-full bg-primary-mid hover:bg-primary p-5 rounded-sm"
+        @click="handleSignIn"
+      >
         Sign In
       </UiButton>
     </div>
