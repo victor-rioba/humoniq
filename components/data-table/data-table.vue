@@ -22,6 +22,12 @@ const NuxtLink = resolveComponent("NuxtLink");
 
 const isLoading = ref(false);
 
+async function fetchMissions() {
+  await useApi().api.missions_list.$get();
+}
+
+onMounted(() => fetchMissions());
+
 // fetch from API
 const allMissions: Mission[] = [
   {
@@ -229,13 +235,7 @@ const columns = [
         {
           class: "text-right text-primary font-semibold cursor-pointer",
         },
-        [
-          h(
-            NuxtLink,
-            { to: `/missions/${row.original.mission}` },
-            "View"
-          ),
-        ]
+        [h(NuxtLink, { to: `/missions/${row.original.mission}` }, () => "View")]
       );
     },
   }),
