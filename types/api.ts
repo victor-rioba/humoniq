@@ -1,3 +1,9 @@
+export type User = {
+  name: string;
+  email: string;
+  source: string;
+};
+
 export enum MissionType {
   Flight = "Flight",
   Hotel = "Hotel",
