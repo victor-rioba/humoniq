@@ -8,15 +8,7 @@ export default defineNuxtPlugin(() => {
     withCredentials: true,
   });
 
-  const serverHeaders = useRequestHeaders(["cookie"]);
-
-  client.interceptors.request.use(
-    function (config) {
-      if (import.meta.server) config.headers.set(serverHeaders);
-      return config;
-    },
-  );
-
+  const { logout } = useAuth();
 
   client.interceptors.response.use(
     function (response) {
@@ -24,7 +16,7 @@ export default defineNuxtPlugin(() => {
     },
     async function (error) {
       if (error?.response?.status === 401 || error?.response?.status === 403) {
-        return navigateTo({ name: "signin" });
+        return logout();
       }
       return Promise.reject(error);
     }
