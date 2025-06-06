@@ -27,7 +27,7 @@ const onSelectionChange = (value: string) => {
     <UiDropdownMenuTrigger as-child>
       <slot />
     </UiDropdownMenuTrigger>
-    <UiDropdownMenuContent class="border-dark bg-darker min-w-64" align="start">
+    <UiDropdownMenuContent class="border-dark bg-darker min-w-64 max-h-96 overflow-y-auto" align="start">
       <UiDropdownMenuCheckboxItem
         v-for="option in options"
         :key="option.value"

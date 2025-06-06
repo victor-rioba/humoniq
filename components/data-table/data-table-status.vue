@@ -9,9 +9,16 @@ const props = defineProps<{
 const statusIcon = computed(
   () =>
     ({
-      [MissionStatus.Attention]: "ph:shield-warning-light",
-      [MissionStatus.Working]: "ph:hourglass-medium",
+      [MissionStatus.Failure]: "ph:shield-warning-light",
+      [MissionStatus.FailedTwimlGen]: "ph:shield-warning-light",
+      [MissionStatus.FailedBrigeConn]: "ph:shield-warning-light",
+      [MissionStatus.FailedInitiation]: "ph:shield-warning-light",
+      [MissionStatus.Unknown]: "ph:shield-warning-light",
+      [MissionStatus.Canceled]: "ph:shield-warning-light",
+      [MissionStatus.CanceledByUser]: "ph:shield-warning-light",
+      [MissionStatus.Initiating]: "ph:hourglass-medium",
       [MissionStatus.Success]: "icon-park-outline:success",
+      [MissionStatus.Completed]: "icon-park-outline:success",
     }[props.status])
 );
 </script>
@@ -22,9 +29,18 @@ const statusIcon = computed(
       :icon="statusIcon"
       class="size-6"
       :class="{
-        'text-other-gold': status === MissionStatus.Working,
-        'text-other-red': status === MissionStatus.Attention,
-        'text-other-green': status === MissionStatus.Success,
+        'text-other-red':
+          status === MissionStatus.Failure ||
+          status === MissionStatus.FailedTwimlGen ||
+          status === MissionStatus.FailedBrigeConn ||
+          status === MissionStatus.FailedInitiation ||
+          status === MissionStatus.Unknown ||
+          status === MissionStatus.Canceled ||
+          status === MissionStatus.CanceledByUser,
+        'text-other-gold': status === MissionStatus.Initiating,
+        'text-other-green':
+          status === MissionStatus.Success ||
+          status === MissionStatus.Completed,
       }"
       ssr
     />
