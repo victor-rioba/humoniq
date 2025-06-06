@@ -3,6 +3,6 @@ import type { Mission } from "~/types";
 
 export type Methods = DefineMethods<{
   get: {
-    resBody: { missionsList: Mission[] };
+    resBody: Mission[];
   };
 }>;
