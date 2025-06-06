@@ -49,3 +49,10 @@ export function formatStatus(status: string) {
   if (!status) return "Unknown";
   return status.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
+
+export function getLast4Digits(cardNumber: string) {
+  if (!cardNumber) return "";
+  // Remove any non-digit characters (spaces, dashes, etc)
+  const digits = cardNumber.replace(/\D/g, "");
+  return digits.slice(-4);
+}

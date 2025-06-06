@@ -2,7 +2,9 @@
 import { Icon } from "@iconify/vue";
 import {
   MissionStatus,
+  type CustomPrompt,
   type DetailedMission,
+  type ProcessedJson,
   type TranscriptMessage,
 } from "~/types";
 
@@ -12,7 +14,7 @@ const missionId = computed(() => {
 
 const mission = ref<DetailedMission>();
 
-const parsedCustomPrompt = computed(() => {
+const parsedCustomPrompt = computed<CustomPrompt>(() => {
   if (!mission.value?.custom_prompt) return null;
   try {
     return JSON.parse(mission.value.custom_prompt);
@@ -21,7 +23,7 @@ const parsedCustomPrompt = computed(() => {
   }
 });
 
-const parsedProcessedJson = computed(() => {
+const parsedProcessedJson = computed<ProcessedJson>(() => {
   if (!mission.value?.processed_json) return null;
   try {
     // Most are clean, but sometimes you need to clean
@@ -180,7 +182,7 @@ fetchMissionDetails();
       </div>
       <div class="space-y-2.5">
         <h3 class="font-semibold text-gray">Confirmation Number</h3>
-        <h5 class="font-semibold">AGR624</h5>
+        <h5 class="font-semibold">{{ mission?.confirmation_code }}</h5>
       </div>
       <div class="space-y-2.5">
         <h3 class="font-semibold text-gray">Passenger Name</h3>
@@ -188,14 +190,19 @@ fetchMissionDetails();
       </div>
       <div class="space-y-2.5">
         <h3 class="font-semibold text-gray">Credit Card</h3>
-        <h5 class="font-semibold">xxxx xxxx xxxx 5004</h5>
+        <h5 class="font-semibold">
+          xxxx xxxx xxxx
+          {{ getLast4Digits(parsedCustomPrompt?.payment.credit_card_number) }}
+        </h5>
       </div>
       <div class="space-y-2.5">
         <h3 class="font-semibold text-gray">Data</h3>
         <div>
           <h5 class="font-semibold">Ideal Date: 13 July 2025</h5>
           <h5 class="font-semibold">Ideal Time: Morning</h5>
-          <h5 class="font-semibold">Maximum Cost: $200</h5>
+          <h5 class="font-semibold">
+            Maximum Cost: ${{ parsedCustomPrompt?.payment.max_allowed_budget }}
+          </h5>
         </div>
       </div>
 
